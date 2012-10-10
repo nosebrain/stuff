@@ -1,0 +1,60 @@
+% for single-sided remove twoside and openright parameter
+\documentclass[a4paper, bibliography=totoc,￼ ￼listof=totoc, abstracton,
+captions=tableheading, twoside, openright]{scrreprt}
+
+% for german text, hyphernation, …
+\usepackage[ngerman]{babel}
+% Eingabe von ü, ä, ö, ß erlauben
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{scrextend}
+\usepackage{amssymb}
+
+% for rotating tables, …
+\usepackage{rotating}
+
+% add images
+\usepackage{graphicx}
+% group images in one figure
+\usepackage{subfig} 
+
+% source code
+\usepackage{listings}
+\lstset{
+	tabsize=2
+}
+
+% translate head lines
+\renewcommand\lstlistingname{Quellcode}
+\renewcommand\lstlistlistingname{Quellcodeverzeichnis}
+
+% urls
+\usepackage{url}
+\urlstyle{same}
+
+% links (e.g. in tocs)
+\usepackage{hyperref}
+\hypersetup{ colorlinks, citecolor = black, filecolor = black, linkcolor = black, urlcolor = black
+}
+
+% cite style
+\usepackage[numbers]{natbib}
+
+% vars
+\newcommand{\thesisTitle}{Titel}
+\newcommand{\thesisSubTitle}{}
+\newcommand{\thesiskind}{Bachelor}
+\newcommand{\place}{Kassel}
+\newcommand{\firstReviewer}{Prof. Dr. X}
+\newcommand{\secondReviewer}{Prof. Dr. Y}
+\newcommand{\supervisor}{Z}
+\newcommand{\university}{Universität \place}
+\newcommand{\firstReviewerInstitution}{\university}
+\newcommand{\secondReviewerInstitution}{\university}
+\newcommand{\supervisorInstitution}{\university}
+
+\newcommand{\deadline}{01.01.2042}
+
+\newcommand{\thesisauthor}{Max Mustermann}
+\newcommand{\studentId}{12345678}
