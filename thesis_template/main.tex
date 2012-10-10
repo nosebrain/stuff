@@ -1,0 +1,49 @@
+\input{stuff/header}
+\input{stuff/hyphenation}
+
+
+\makeindex
+
+\begin{document}
+
+% title page
+\input{stuff/title_page/title_page}
+\newpage
+
+% yes i haven't copy and paste anything
+\input{stuff/declaration/declaration}
+\newpage
+
+\input{abstract/abstract}
+
+
+{
+  \pagenumbering{roman}
+  \phantomsection \label{toc}
+  \addcontentsline{toc}{section}{Inhaltsverzeichnis}
+  \tableofcontents
+  
+  \listoffigures
+  \addcontentsline{toc}{section}{Abbildungsverzeichnis}
+  
+  \listoftables
+  \addcontentsline{toc}{section}{Tabellenverzeichnis}
+  
+  \lstlistoflistings
+  \addcontentsline{toc}{section}{Quellcodeverzeichnis}
+  
+  \newpage
+}
+
+\pagenumbering{arabic}
+  
+\include{introduction/introduction}
+
+\include{basics/basics}
+
+\include{compendium/compendium}
+
+\bibliographystyle{natdin}
+\bibliography{references}
+
+\end{document}
