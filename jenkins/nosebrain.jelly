@@ -59,40 +59,43 @@
   <j:set var="changeSet" value="${build.changeSet}" />
   <j:if test="${changeSet!=null}">
    <j:set var="hadChanges" value="false" />
-   <h3>CHANGES</h3>
+   <j:forEach var="cs" items="${changeSet}" varStatus="loop">
+     <j:set var="hadChanges" value="true" />
+   </j:forEach>
+   <j:if test="${hadChanges}">
+   <h3>Changes</h3>
    <ul>
     <j:forEach var="cs" items="${changeSet}" varStatus="loop">
      <j:set var="hadChanges" value="true" />
      <j:set var="aUser" value="${cs.hudsonUser}" />
-       <li> ${spc}Revision
+       <li>Revision
        <b>
         ${cs.commitId?:cs.revision?:cs.changeNumber}
        </b>
        by
        <b>
-        ${aUser!=null?aUser.displayName:cs.author.displayName}:
+        ${aUser!=null?aUser.displayName:cs.author.displayName}
        </b>
+       <br />
        <b>
         (${cs.msgAnnotated})
        </b>
        <ul>
      <j:forEach var="p" items="${cs.affectedFiles}">
        <li>
-        ${spc}${p.editType.name} - ${p.path}
+        [${p.editType.name}] ${p.path}
        </li>
      </j:forEach>
      </ul>
      </li>
     </j:forEach>
-    <j:if test="${!hadChanges}">
-     <li>No Changes</li>
     </j:if>
    </ul>
   </j:if>
   <!-- JUnit TEMPLATE -->
   <j:set var="junitResultList" value="${it.JUnitTestResult}" />
   <j:if test="${junitResultList.isEmpty()!=true}">
-    <h3>FAILING JUNIT TESTS</h3>
+    <h3>Failing JUnit tests</h3>
     <ul>
     <j:forEach var="junitResult" items="${it.JUnitTestResult}">
      <j:forEach var="packageResult" items="${junitResult.getChildren()}">
