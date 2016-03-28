@@ -2,6 +2,7 @@
 # based on http://unix.stackexchange.com/a/91711
 # added hostname parameter and network device parameter
 
+IPTABLES=/sbin/iptables
 HOSTNAME=$1
 NORMED_HOSTNAME=`echo $HOSTNAME | tr -cd '[[:alnum:]]'`
 LOG_BASE_PATH=/var/log/ddns_update
@@ -19,8 +20,11 @@ DATE=`date`
 if [ "$Current_IP" = "$Old_IP" ] ; then
   echo "$DATE ${HOSTNAME}: IP address has not changed"
 else
-  iptables -D INPUT -i $NETWORK_DEVICE -s $Old_IP -j ACCEPT
-  iptables -I INPUT -i $NETWORK_DEVICE -s $Current_IP -j ACCEPT
+  # only remove the old ip if set
+  if [[ ! -z "${Old_IP// }" ]]; then
+    $IPTABLES -D INPUT -i $NETWORK_DEVICE -s $Old_IP -j ACCEPT
+  fi
+  $IPTABLES -I INPUT -i $NETWORK_DEVICE -s $Current_IP -j ACCEPT
   echo $Current_IP > $LOGFILE
-  echo "$DATE ${HOSTNAME}: iptables have been updated"
+  echo "$DATE ${HOSTNAME}: iptables have been updated (${Old_IP} -> ${Current_IP})"
 fi
