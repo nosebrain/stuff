@@ -1,7 +1,7 @@
 #!/bin/bash
 # required packages: iptables-persistent
 # 
-# based on http://unix.stackexchange.com/questions/91701/ufw-allow-traffic-only-from-a-domain-with-dynamic-ip-address
+# based on http://unix.stackexchange.com/a/91711
 # adapted for multiple DDNS sources
 IPTABLES=/sbin/iptables
 LOG_BASE_PATH=/var/log/ddns_update
