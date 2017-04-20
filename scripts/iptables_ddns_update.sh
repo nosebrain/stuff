@@ -17,6 +17,12 @@ touch $LOGFILE
 Old_IP=$(cat $LOGFILE)
 
 Current_IP=$(host $HOSTNAME | cut -f4 -d' ')
+
+if [ "$Current_IP" = "found:" ] ; then
+  echo "DNS lookup failed"
+  exit 1
+fi
+
 DATE=`date`
 
 if [ "$Current_IP" = "$Old_IP" ] ; then
