@@ -18,8 +18,8 @@ Old_IP=$(cat $LOGFILE)
 
 Current_IP=$(host $HOSTNAME | cut -f4 -d' ')
 
-if [[ $Current_IP == *"found:"* ]] ; then
-  echo "DNS lookup failed"
+if ! [[ $Current_IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  echo "$Current_IP is no valid ip address"
   exit 1
 fi
 
