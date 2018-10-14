@@ -8,10 +8,12 @@ echo "Checking for updates..."
 IFS=$'\n'
 for APP_VERSION in `brew cask list --versions`
 do
+#  echo $APP_VERSION
   INSTALLED_VERSION=${APP_VERSION##* }
   APP=`echo -n "${APP_VERSION}" | cut -d" " -f1`
   CURRENT_APP_VERSION=`brew cask info $APP | head -n 1`
   CURRENT_VERSION=${CURRENT_APP_VERSION##*: }
+  CURRENT_VERSION=${CURRENT_VERSION%%" (auto_updates)"}
   if [ "$CURRENT_VERSION" != "$INSTALLED_VERSION" ]; then
     echo "$APP $INSTALLED_VERSION -> $CURRENT_VERSION"
     APPS_TO_UPDATE="${APPS_TO_UPDATE} $APP"
@@ -37,9 +39,11 @@ case $response in
   done
   echo -n "cleaning up..."
   brew cleanup
-  brew cask cleanup
   echo " Done"
   ;;
   *)
   ;;
 esac
+
+# brew cleanup --force -s
+# rm -rf $(brew --cache)
