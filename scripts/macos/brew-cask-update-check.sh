@@ -34,11 +34,12 @@ case $response in
   [yY]|"")
   for APP in `echo $APPS_TO_UPDATE`; do
     echo -n "upgrading $APP..."
-    brew cask install --force $APP > /dev/null 2>&1
+    ./brew-cask-update.sh $APP > /dev/null 2>&1
     echo " Done"
   done
   echo -n "cleaning up..."
   brew cleanup
+  brew cask cleanup
   echo " Done"
   ;;
   *)
