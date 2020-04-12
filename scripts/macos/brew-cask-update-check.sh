@@ -39,12 +39,8 @@ case $response in
   done
   echo -n "cleaning up..."
   brew cleanup
-  brew cask cleanup
   echo " Done"
   ;;
   *)
   ;;
 esac
-
-# brew cleanup --force -s
-# rm -rf $(brew --cache)
