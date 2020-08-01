@@ -10,6 +10,16 @@ case $APP in
     APP_KEY="/Library/LaunchAgents/homebrew.mxcl.mysql@5.7.plist"
     CASK="mysql@5.7"
     ;;
+  elasticsearch)
+    APP_NAME="Elasticsearch"
+    APP_KEY="/Library/LaunchAgents/homebrew.mxcl.elasticsearch@6.plist"
+    CASK="elasticsearch@6"
+    ;;
+  haproxy)
+    APP_NAME="HAProxy"
+    APP_KEY="/Library/LaunchAgents/homebrew.mxcl.haproxy.plist"
+    CASK="haproxy"
+    ;;
   *)
     echo "app not configured"
     exit -1
