@@ -7,7 +7,7 @@ APP_KEY=""
 case $APP in
   mysql)
     APP_NAME="MySQL"
-    APP_KEY="/Library/LaunchDaemons/homebrew.mxcl.mysql.plist"
+    APP_KEY="/Library/LaunchAgents/homebrew.mxcl.mysql@5.7.plist"
     CASK="mysql"
     ;;
   *)
