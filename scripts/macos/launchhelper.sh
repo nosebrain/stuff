@@ -8,7 +8,7 @@ case $APP in
   mysql)
     APP_NAME="MySQL"
     APP_KEY="/Library/LaunchAgents/homebrew.mxcl.mysql@5.7.plist"
-    CASK="mysql"
+    CASK="mysql@5.7"
     ;;
   *)
     echo "app not configured"
