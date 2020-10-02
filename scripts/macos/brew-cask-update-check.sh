@@ -6,7 +6,7 @@ APPS_TO_UPDATE=""
 
 echo "Checking for updates..."
 IFS=$'\n'
-for APP_VERSION in `brew cask list --versions`
+for APP_VERSION in `brew list --cask --versions`
 do
 #  echo $APP_VERSION
   INSTALLED_VERSION=${APP_VERSION##* }
